@@ -1,10 +1,11 @@
 import { Component, input } from '@angular/core';
 import { Product } from '../../../shared/interfaces/product.interface';
 import { StarRatingComponent } from "../star-rating/star-rating.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
-  imports: [StarRatingComponent],
+  imports: [RouterLink,StarRatingComponent],
   templateUrl: './product-card.component.html',
   styles: ``
 })

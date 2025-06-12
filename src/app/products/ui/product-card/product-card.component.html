@@ -1,60 +1,62 @@
-<div
-  class="h-full flex flex-col bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition-shadow duration-300 overflow-hidden dark:bg-gray-800 dark:border-gray-700"
->
-  <!-- Imagen del product()o -->
-  <div class="relative pt-[100%] bg-gray-50">
-    <img
-      class="absolute top-0 left-0 w-full h-full object-contain p-4"
-      [src]="product().image"
-      [alt]="product().title"
-    />
-  </div>
-
-  <!-- Contenido de la tarjeta -->
-  <div class="p-4 flex flex-col flex-grow">
-    <!-- Título y categoría -->
-    <div class="mb-2">
-      <span
-        class="text-xs text-blue-600 font-semibold uppercase tracking-wider"
-      >
-        {{ product().category }}
-      </span>
-      <h3 class="text-lg font-bold text-gray-900 dark:text-white line-clamp-2">
-        {{ product().title }}
-      </h3>
+<a [routerLink]="['/product', product().id]">
+  <div
+    class="h-full flex flex-col bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition-shadow duration-300 overflow-hidden dark:bg-gray-800 dark:border-gray-700"
+  >
+    <!-- Imagen del product()o -->
+    <div class="relative pt-[100%] bg-gray-50">
+      <img
+        class="absolute top-0 left-0 w-full h-full object-contain p-4"
+        [src]="product().image"
+        [alt]="product().title"
+      />
     </div>
 
-    <!-- Rating -->
-    <app-star-rating [rating]="product().rating.rate"></app-star-rating>
+    <!-- Contenido de la tarjeta -->
+    <div class="p-4 flex flex-col flex-grow">
+      <!-- Título y categoría -->
+      <div class="mb-2">
+        <span
+          class="text-xs text-blue-600 font-semibold uppercase tracking-wider"
+        >
+          {{ product().category }}
+        </span>
+        <h3
+          class="text-lg font-bold text-gray-900 dark:text-white line-clamp-2"
+        >
+          {{ product().title }}
+        </h3>
+      </div>
 
-    <!-- Descripción -->
-    <div class="mb-4 relative group">
-  <!-- Contenedor de descripción con scroll suave -->
-  <div 
-    class="max-h-30 overflow-y-auto pr-2 text-gray-600 dark:text-gray-300 text-sm 
-           scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100
-           dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800
-           hover:scrollbar-thumb-gray-400 dark:hover:scrollbar-thumb-gray-500
-           transition-colors duration-200">
-    {{product().description}}
-  </div>
-  
-  <!-- Indicador visual de scroll (opcional) -->
-  <div class="absolute bottom-0 left-0 right-2 h-4 bg-gradient-to-t from-white dark:from-gray-800 to-transparent 
-              opacity-100 group-hover:opacity-0 transition-opacity duration-200 pointer-events-none"></div>
-</div>
+      <!-- Rating -->
+      <app-star-rating [rating]="product().rating.rate"></app-star-rating>
 
-    <!-- Precio y botón -->
-    <div class="mt-auto flex items-center justify-between">
-      <span class="text-xl font-bold text-gray-900 dark:text-white">
-        $ {{ product().price }}
-      </span>
+      <!-- Descripción -->
+      <div class="mb-4 relative group">
+        <!-- Contenedor de descripción con scroll suave -->
+        <div
+          class="max-h-30 overflow-y-auto pr-2 text-gray-600 dark:text-gray-300 text-sm scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800 hover:scrollbar-thumb-gray-400 dark:hover:scrollbar-thumb-gray-500 transition-colors duration-200"
+        >
+          {{ product().description }}
+        </div>
 
-      <button
-        class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-md transition-colors"
-      >
-        <span class="hidden sm:inline">Agregar al</span> 🛒
-      </button>
+        <!-- Indicador visual de scroll (opcional) -->
+        <div
+          class="absolute bottom-0 left-0 right-2 h-4 bg-gradient-to-t from-white dark:from-gray-800 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-200 pointer-events-none"
+        ></div>
+      </div>
+
+      <!-- Precio y botón -->
+      <div class="mt-auto flex items-center justify-between">
+        <span class="text-xl font-bold text-gray-900 dark:text-white">
+          $ {{ product().price }}
+        </span>
+
+        <button
+          class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-md transition-colors"
+        >
+          <span class="hidden sm:inline">Agregar al</span> 🛒
+        </button>
+      </div>
     </div>
   </div>
-</div>
+</a>

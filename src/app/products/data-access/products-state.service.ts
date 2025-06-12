@@ -2,8 +2,8 @@ import { Injectable, inject } from '@angular/core';
 import { Product } from '../../shared/interfaces/product.interface';
 import { signalSlice } from 'ngxtension/signal-slice';
 import { ProductsService } from './products.service';
-import { map, Subject } from 'rxjs';
-import { startWith, switchMap } from 'rxjs/operators';
+import { map, of, Subject } from 'rxjs';
+import { startWith, switchMap, catchError } from 'rxjs/operators';
 
 interface State {
   products: Product[];
@@ -30,6 +30,12 @@ export class ProductsStateService {
       products, // Reemplaza en lugar de acumular
       status: 'success' as const,
     })),
+    catchError(() => {
+      return of({
+        products: [],
+        status: 'error' as const,
+      });
+    }),
   );
 
   state = signalSlice({
@@ -39,7 +45,7 @@ export class ProductsStateService {
         map((page) => ({
           page,
           status: 'loading' as const,
-        }))
+        })),
       ),
       this.loadProducts$,
     ],
